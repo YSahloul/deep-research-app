@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Markdown rendering inside the file viewer */
+.prose-research {
+  @apply text-neutral-200 leading-relaxed;
+}
+.prose-research h1 {
+  @apply text-2xl font-bold mt-6 mb-3 text-white;
+}
+.prose-research h2 {
+  @apply text-xl font-semibold mt-5 mb-2 text-white border-b border-neutral-800 pb-1;
+}
+.prose-research h3 {
+  @apply text-lg font-semibold mt-4 mb-2 text-amber-400;
+}
+.prose-research p {
+  @apply my-2;
+}
+.prose-research a {
+  @apply text-amber-400 underline underline-offset-2 hover:text-amber-300;
+}
+.prose-research ul,
+.prose-research ol {
+  @apply my-2 ml-6 space-y-1;
+}
+.prose-research ul {
+  @apply list-disc;
+}
+.prose-research ol {
+  @apply list-decimal;
+}
+.prose-research code {
+  @apply bg-neutral-900 text-amber-300 px-1 py-0.5 rounded text-sm font-mono;
+}
+.prose-research pre {
+  @apply bg-neutral-900 border border-neutral-800 rounded p-3 my-3 overflow-x-auto;
+}
+.prose-research pre code {
+  @apply bg-transparent p-0;
+}
+.prose-research strong {
+  @apply text-white;
+}
+.prose-research blockquote {
+  @apply border-l-2 border-amber-700 pl-3 italic text-neutral-400 my-2;
+}
+.prose-research hr {
+  @apply border-neutral-800 my-4;
+}
