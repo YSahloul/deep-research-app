@@ -30,6 +30,6 @@
   "vars": {
     "BRIGHTDATA_ZONE": "web_unlocker1",
     "BRIGHTDATA_SERP_ZONE": "serp_api1",
-    "RESEARCH_MODEL": "anthropic/claude-sonnet-4-5"
+    "RESEARCH_MODEL": "workers-ai/@cf/moonshotai/kimi-k2.5"
   }
 }
