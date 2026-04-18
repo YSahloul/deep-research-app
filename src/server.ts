@@ -112,20 +112,25 @@ export default {
       const parts = url.pathname.split("/").filter(Boolean);
       // /api/agent/:name/files            → list
       // /api/agent/:name/files/:path...   → read/download
-      if (parts.length >= 3 && parts[2] === "files") {
-        const name = parts[1];
+      // parts = ["api", "agent", ":name", "files", ...:path]
+      if (parts.length >= 4 && parts[0] === "api" && parts[1] === "agent" && parts[3] === "files") {
+        const name = parts[2];
         const id = env.ResearchAgent.idFromName(name);
         const stub = env.ResearchAgent.get(id) as unknown as {
           listFiles(): Promise<Array<{ path: string; size: number }>>;
           readFile(path: string): Promise<{ path: string; content: string }>;
         };
 
-        if (parts.length === 3) {
-          const files = await stub.listFiles();
-          return Response.json({ files });
+        if (parts.length === 4) {
+          try {
+            const files = await stub.listFiles();
+            return Response.json({ files });
+          } catch (err) {
+            return Response.json({ files: [], error: String(err) });
+          }
         }
 
-        const path = "/" + parts.slice(3).join("/");
+        const path = "/" + parts.slice(4).join("/");
         const { content } = await stub.readFile(path);
         const filename = path.split("/").pop() ?? "file";
         const download = url.searchParams.get("download") === "1";
